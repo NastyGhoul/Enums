@@ -3,6 +3,8 @@
 #include <math.h>
 #include <fstream>
 #include <string>
+#include <sstream>
+#include <algorithm>
 using namespace std;
 
 enum class Fruit
@@ -25,13 +27,16 @@ enum class Shape
 
 #include "Fruit.h"
 #include "Math.h"
-#include "message.h"
+#include "idk.h"
 
 int main()
 {
+	int numbers[] = {2, 5, 1, 6, 3, 9};
+	string plsWork;
 	fstream file;
-	string information = "myInfo";
 	string name;
+	string surname;
+	string albumNumber;
 	int task;
 	int userInput;
 
@@ -58,10 +63,6 @@ int main()
 		break;
 
 	case 3:
-		fstream file;
-		string name;
-		string surname;
-		string albumNumber;
 		cout << "Enter name:\n";
 		cin >> name;
 		cout << "Enter surname:\n";
@@ -74,9 +75,42 @@ int main()
 		break;
 
 	case 4:
+		file.open("message.txt", ios::in);
+		getline(file, name);
+		cout << name;
+		file.close();
+		break;
+
+	case 5:
+		int length = sizeof(numbers) / sizeof(numbers[0]);
+
+		//bez dynamicznej alokacji pamiecia musialem po rpostu wpisac duza liczbe
+		int beterNumbers[100];
+		file.open("idk.txt", ios::out);
+		for (int j = 0; j < length; j++)
+		{
+			file << numbers[j] << ", ";
+		}
+		file << endl;
+		file.close();
+		
+		file.open("idk.txt", ios::in);
+		for (int i = 0; i < length; i++)
+		{
+			getline(file, plsWork, ',');
+			int num = stoi(plsWork);
+			beterNumbers[i] = num;
+			//cout << beterNumbers[i] << ", ";
+		}
+		file.close();
+		sort(beterNumbers, beterNumbers + length);
+		cout << "List of Array after sorting is: \n> ";
+		for (int i = 0; i < length; ++i)
+		{
+			cout << beterNumbers[i] << " ";
+		}
 		break;
 
 	}
-
 	return 0;
 }

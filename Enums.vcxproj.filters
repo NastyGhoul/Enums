@@ -26,12 +26,15 @@
     <ClInclude Include="Math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="message.h">
+    <ClInclude Include="idk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="message.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="idk.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
